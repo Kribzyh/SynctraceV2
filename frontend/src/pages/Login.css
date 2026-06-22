@@ -1,5 +1,5 @@
 .login-page {
-  --navy: #0a0e14;
+  --navy: #0A101C;
   --navy-light: #141b26;
   --navy-mid: #1e2a3a;
   --gold: #eab308;
@@ -288,7 +288,7 @@
 }
 
 .login-signup__link {
-  color: var(--orange);
+  color: var(--gold);
   font-weight: 600;
   text-decoration: none;
 

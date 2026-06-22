@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import AdviserLayout from '../../components/AdviserLayout.jsx'
+import { PageBanner } from '../../components/PageBanner.jsx' 
 import ComponentTraceModal from '../../components/ComponentTraceModal.jsx'
 import GapOverviewPanel from '../../components/GapOverviewPanel.jsx'
 import {
@@ -55,28 +56,25 @@ export default function ProjectReview() {
   return (
     <AdviserLayout>
       <div className="hub-page adviser-page adviser-team-detail">
-        <header className="adviser-team-detail__hero">
-          <div className="adviser-team-detail__hero-main">
-            <div className="adviser-team-detail__hero-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div>
-              <p className="adviser-team-detail__eyebrow">Team {project.teamCode} · {project.section?.toUpperCase()}</p>
-              <h1 className="adviser-team-detail__title">{project.title}</h1>
-              <p className="adviser-team-detail__meta">
-                {project.course} · Last submitted {project.lastSubmitted}
-              </p>
-            </div>
-          </div>
-          <span className={`adviser-status-pill adviser-status-pill--${status.tone} adviser-team-detail__status`}>
-            {status.label}
-          </span>
-        </header>
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          }
+          tag={`TEAM ${project.teamCode} · ${project.section?.toUpperCase()}`}
+          title={project.title}
+          subtitle={`${project.course} · Last submitted ${project.lastSubmitted}`}
+          rightElement={
+            <span className={`adviser-status-pill adviser-status-pill--${status.tone} adviser-team-detail__status`}>
+              {status.label}
+            </span>
+          }
+        />
 
         <div className="adviser-team-detail__metrics">
           <div className={`adviser-team-detail__metric adviser-team-detail__metric--${scoreTone(project.traceabilityScore)}`}>

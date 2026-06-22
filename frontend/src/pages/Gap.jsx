@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import './HubPage.css'
 import './Gap.css'
 
@@ -94,23 +95,21 @@ export default function Gap() {
   return (
     <DashboardLayout>
       <div className="gap-page">
-        <header className="hub-banner">
-          <div className="hub-banner__left">
-            <div className="hub-banner__icon hub-banner__icon--chain">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="hub-banner__title">Gap Analysis</h1>
-              <p className="hub-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Review problems found in your documents and follow the suggested fixes.
-              </p>
-            </div>
-          </div>
-        </header>
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect width="8" height="4" x="8" y="2" rx="1" ry="1"/>
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+              <path d="M12 11h4"/>
+              <path d="M12 16h4"/>
+              <path d="M8 11h.01"/>
+              <path d="M8 16h.01"/>
+            </svg>
+          }
+          title="Gap Analysis"
+          subtitle="Review problems found in your documents and follow the suggested fixes."
+        />
 
         <div className="gap-summary">
           {severitySummary.map((item) => (

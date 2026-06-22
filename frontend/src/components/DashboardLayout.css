@@ -1,5 +1,5 @@
 .dashboard-layout {
-  --navy: #0a0e14;
+  --navy: #0A101C;
   --gold: #eab308;
   --sidebar-width: 240px;
 
@@ -63,9 +63,11 @@
 
 .sidebar__footer {
   flex-shrink: 0;
-  padding-top: 16px;
   margin-top: auto;
-  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.08); 
+  width: calc(100% + 32px); 
+  margin-left: -16px;
+  padding: 16px 16px 0 16px;
 }
 
 .sidebar__section {
@@ -122,22 +124,25 @@
 .sidebar__logout {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  gap: 12px;
   padding: 10px 12px;
   border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #fff;
-  background: #dc2626;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+  background: transparent;
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
   box-sizing: border-box;
 
   &:hover {
-    background: #b91c1c;
+    background: rgba(255, 255, 255, 0.06);
     color: #fff;
   }
+}
+
+.sidebar__logout-icon {
+  color: var(--gold);
 }
 
 .dashboard-main {

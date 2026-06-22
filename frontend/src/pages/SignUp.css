@@ -14,7 +14,7 @@
 .signup-form__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
   margin: 0;
 }
 
@@ -58,7 +58,7 @@
 
   .role-card__icon {
     background: var(--gold, #eab308);
-    color: var(--navy, #0a0e14);
+    color: var(--navy, #0A101C);
   }
 }
 
@@ -78,7 +78,7 @@
 .role-card__title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
   margin: 0 0 6px;
 }
 
@@ -94,7 +94,7 @@
   cursor: not-allowed;
 
   &:hover {
-    background: var(--navy, #0a0e14);
+    background: var(--navy, #0A101C );
   }
 
   &:active {
