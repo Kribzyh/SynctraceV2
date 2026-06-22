@@ -1,11 +1,10 @@
 import { useState } from 'react'
+import { CheckCircle2, Settings } from 'lucide-react'
+import { PageBanner } from '../components/PageBanner.jsx'
 import DashboardLayout from '../components/DashboardLayout.jsx'
-import { capstoneAdvisers } from '../utils/advisers.js'
 import { getProject, saveProject } from '../utils/session.js'
 import './HubPage.css'
 import './Workspace.css'
-
-const defaultAdviser = capstoneAdvisers[0]
 
 export default function Workspace() {
   const initial = getProject() ?? {}
@@ -14,7 +13,6 @@ export default function Workspace() {
     section: initial.section ?? 'IT411-02',
     teamCode: initial.teamCode ?? 'CITU-2026-A1',
     status: initial.status ?? 'In Progress',
-    adviser: initial.adviser ?? defaultAdviser,
     members: initial.members ?? [],
     teamRole: initial.teamRole ?? 'leader',
   })
@@ -28,7 +26,7 @@ export default function Workspace() {
     setProject(next)
     saveProject(next)
     setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    setTimeout(() => setSaved(false), 2500)
   }
 
   function addMember() {
@@ -57,27 +55,22 @@ export default function Workspace() {
   return (
     <DashboardLayout>
       <div className="hub-page workspace-page">
-        <header className="hub-banner">
-          <div className="hub-banner__left">
-            <div className="hub-banner__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="hub-banner__title">Workspace</h1>
-              <p className="hub-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Manage your capstone project details and team members.
-              </p>
-            </div>
+        
+        <PageBanner
+          icon={<Settings className="text-[#EAB308]" size={28} />}
+          title="Project Details"
+          subtitle="Manage your capstone project details and team members."
+        />
+
+        {saved && (
+          <div className="workspace-global-alert">
+            <CheckCircle2 size={18} />
+            <span>Workspace changes saved successfully.</span>
           </div>
-        </header>
+        )}
 
         <div className="workspace-grid">
+          {/* Left Column: Project Details */}
           <section className="hub-card workspace-details">
             <div className="workspace-section__header">
               <h2>Project Details</h2>
@@ -135,65 +128,54 @@ export default function Workspace() {
                 <div><dt>Your Role</dt><dd>{isLeader ? 'Leader' : 'Member'}</dd></div>
               </dl>
             )}
-            {saved && <p className="workspace-saved">Changes saved.</p>}
           </section>
 
-          <section className="hub-card workspace-adviser">
-            <h2>Adviser Assigned</h2>
-            <div className="workspace-adviser__card">
-              <div className="workspace-adviser__avatar">{project.adviser.name.charAt(4)}</div>
-              <div>
-                <p className="workspace-adviser__name">{project.adviser.name}</p>
-                <p className="workspace-adviser__email">{project.adviser.email}</p>
-              </div>
+          {/* Right Column: Team Members */}
+          <section className="hub-card workspace-members">
+            <div className="workspace-section__header">
+              <h2>Team Members</h2>
+              <span className="workspace-members__count">{project.members.length + 1} total</span>
             </div>
+
+            <ul className="workspace-members__list">
+              <li className="workspace-member workspace-member--leader">
+                <span className="workspace-member__avatar">Y</span>
+                <div>
+                  <p className="workspace-member__name">You (Project Leader)</p>
+                  <p className="workspace-member__email">you@gmail.com</p>
+                </div>
+                <span className="workspace-member__badge">Leader</span>
+              </li>
+              {project.members.map((m) => (
+                <li key={m.email} className="workspace-member">
+                  <span className="workspace-member__avatar">{m.name.charAt(0).toUpperCase()}</span>
+                  <div>
+                    <p className="workspace-member__name">{m.name}</p>
+                    <p className="workspace-member__email">{m.email}</p>
+                  </div>
+                  {isLeader && (
+                    <button type="button" className="workspace-member__remove" onClick={() => removeMember(m.email)}>
+                      Remove
+                    </button>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            {isLeader && (
+              <div className="workspace-add-member">
+                <input
+                  type="email"
+                  placeholder="teammate@gmail.com"
+                  value={memberEmail}
+                  onChange={(e) => setMemberEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMember())}
+                />
+                <button type="button" className="hub-btn hub-btn--primary" onClick={addMember}>Add Member</button>
+              </div>
+            )}
           </section>
         </div>
-
-        <section className="hub-card workspace-members">
-          <div className="workspace-section__header">
-            <h2>Team Members</h2>
-            <span className="workspace-members__count">{project.members.length + 1} total</span>
-          </div>
-
-          <ul className="workspace-members__list">
-            <li className="workspace-member workspace-member--leader">
-              <span className="workspace-member__avatar">Y</span>
-              <div>
-                <p className="workspace-member__name">You (Project Leader)</p>
-                <p className="workspace-member__email">you@cit.edu</p>
-              </div>
-              <span className="workspace-member__badge">Leader</span>
-            </li>
-            {project.members.map((m) => (
-              <li key={m.email} className="workspace-member">
-                <span className="workspace-member__avatar">{m.name.charAt(0).toUpperCase()}</span>
-                <div>
-                  <p className="workspace-member__name">{m.name}</p>
-                  <p className="workspace-member__email">{m.email}</p>
-                </div>
-                {isLeader && (
-                  <button type="button" className="workspace-member__remove" onClick={() => removeMember(m.email)}>
-                    Remove
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-
-          {isLeader && (
-            <div className="workspace-add-member">
-              <input
-                type="email"
-                placeholder="teammate@cit.edu"
-                value={memberEmail}
-                onChange={(e) => setMemberEmail(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMember())}
-              />
-              <button type="button" className="hub-btn hub-btn--primary" onClick={addMember}>Add Member</button>
-            </div>
-          )}
-        </section>
       </div>
     </DashboardLayout>
   )
