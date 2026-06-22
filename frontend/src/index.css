@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+.banner-accent-line {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: #eab308;
+  flex-shrink: 0;
+}
+
+.banner-accent-line--with-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
