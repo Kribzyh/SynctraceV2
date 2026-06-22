@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect x="220" y="60" width="360" height="380" rx="16" fill="#111827" stroke="#1f2937"/>
+  <rect x="260" y="100" width="80" height="80" rx="8" fill="#1f2937"/>
+  <rect x="360" y="110" width="180" height="16" rx="4" fill="#374151"/>
+  <rect x="360" y="140" width="120" height="12" rx="4" fill="#4b5563"/>
+  <rect x="260" y="210" width="280" height="44" rx="8" fill="#1f2937" stroke="#374151"/>
+  <rect x="260" y="270" width="280" height="44" rx="8" fill="#1f2937" stroke="#374151"/>
+  <rect x="260" y="340" width="280" height="48" rx="8" fill="#eab308"/>
+  <rect x="300" y="356" width="200" height="16" rx="4" fill="#0a0e14" opacity="0.5"/>
+  <rect x="260" y="410" width="280" height="40" rx="8" fill="#1f2937" stroke="#4285F4"/>
+  <text x="400" y="435" text-anchor="middle" fill="#e5e7eb" font-family="system-ui,sans-serif" font-size="14">Sign in with Google</text>
+  <text x="400" y="40" text-anchor="middle" fill="#eab308" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Login Component</text>
+</svg>

@@ -1,0 +1,95 @@
+.hub-page {
+  --navy: #0a0e14;
+  --gold: #eab308;
+  --green: #16a34a;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px 28px 32px;
+}
+
+.hub-banner {
+  display: flex;
+  align-items: center;
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 16px;
+}
+
+.hub-banner__left {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hub-banner__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+  flex-shrink: 0;
+  border: 2px solid var(--gold);
+}
+
+.hub-banner__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.hub-banner__subtitle {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.hub-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+}
+
+.hub-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+}
+
+.hub-btn--primary {
+  background: var(--navy);
+  color: #fff;
+}
+
+.hub-btn--outline {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  color: var(--navy);
+}
+
+@media (max-width: 768px) {
+  .hub-page {
+    padding: 16px;
+  }
+
+  .hub-banner {
+    padding: 20px;
+  }
+}

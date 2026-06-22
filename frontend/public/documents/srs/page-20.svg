@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 842" fill="none">
+  <rect width="595" height="842" fill="#fff"/>
+  <text x="297" y="36" text-anchor="middle" fill="#111" font-family="Times New Roman, serif" font-size="11">Software Requirements Specification</text>
+  <text x="297" y="52" text-anchor="middle" fill="#111" font-family="Times New Roman, serif" font-size="11" font-weight="700">SyncTrace</text>
+  <text x="80" y="72" fill="#333" font-family="Times New Roman, serif" font-size="9">Document Version: 1.0</text>
+  <text x="420" y="72" fill="#333" font-family="Times New Roman, serif" font-size="9">Date: May 26, 2026</text>
+  <line x1="60" y1="82" x2="535" y2="82" stroke="#ccc"/>
+  <text x="80" y="108" fill="#111" font-family="Times New Roman, serif" font-size="12" font-weight="700">1.1 Authenticate User and Initialize Access</text>
+  <rect x="120" y="130" width="355" height="220" fill="none" stroke="#111"/>
+  <text x="297" y="155" text-anchor="middle" fill="#111" font-size="10" font-family="Arial, sans-serif">SyncTrace</text>
+  <ellipse cx="90" cy="210" rx="28" ry="14" fill="none" stroke="#111"/>
+  <text x="90" y="214" text-anchor="middle" font-size="8" font-family="Arial">User</text>
+  <ellipse cx="90" cy="290" rx="48" ry="14" fill="none" stroke="#111"/>
+  <text x="90" y="294" text-anchor="middle" font-size="7" font-family="Arial">Google OAuth 2.0</text>
+  <ellipse cx="220" cy="190" rx="62" ry="16" fill="none" stroke="#111"/>
+  <text x="220" y="194" text-anchor="middle" font-size="7" font-family="Arial">Sign In with Google</text>
+  <ellipse cx="360" cy="190" rx="72" ry="16" fill="none" stroke="#111"/>
+  <text x="360" y="194" text-anchor="middle" font-size="7" font-family="Arial">Validate User Information</text>
+  <ellipse cx="360" cy="250" rx="72" ry="16" fill="none" stroke="#111"/>
+  <text x="360" y="254" text-anchor="middle" font-size="7" font-family="Arial">Initialize User Session</text>
+  <ellipse cx="220" cy="310" rx="88" ry="16" fill="none" stroke="#111"/>
+  <text x="220" y="314" text-anchor="middle" font-size="7" font-family="Arial">Authenticate User and Initialize Access</text>
+  <ellipse cx="360" cy="310" rx="88" ry="16" fill="none" stroke="#111"/>
+  <text x="360" y="314" text-anchor="middle" font-size="7" font-family="Arial">Redirect to Dashboard or Next Step</text>
+  <line x1="118" y1="210" x2="158" y2="190" stroke="#111" marker-end="url(#arrow)"/>
+  <line x1="282" y1="190" x2="288" y2="190" stroke="#111" stroke-dasharray="4 2"/>
+  <text x="285" y="182" font-size="6" fill="#333">&lt;&lt;include&gt;&gt;</text>
+  <defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#111"/></marker></defs>
+  <text x="80" y="380" fill="#111" font-family="Times New Roman, serif" font-size="11" font-weight="700">Use Case Description</text>
+  <rect x="80" y="390" width="435" height="120" fill="none" stroke="#111"/>
+  <line x1="180" y1="390" x2="180" y2="510" stroke="#111"/>
+  <line x1="80" y1="420" x2="515" y2="420" stroke="#111"/>
+  <line x1="80" y1="450" x2="515" y2="450" stroke="#111"/>
+  <text x="90" y="410" font-size="9" font-family="Arial">Use Case Name</text>
+  <text x="190" y="410" font-size="9" font-family="Arial">Authenticate User and Initialize Access</text>
+  <text x="90" y="440" font-size="9" font-family="Arial">Actors</text>
+  <text x="190" y="440" font-size="9" font-family="Arial">User, Google OAuth 2.0</text>
+  <text x="90" y="470" font-size="9" font-family="Arial">Description</text>
+  <text x="190" y="468" font-size="8" font-family="Arial">The user signs in via Google. The system validates credentials,</text>
+  <text x="190" y="480" font-size="8" font-family="Arial">initializes the session, and redirects to the dashboard.</text>
+  <text x="297" y="820" text-anchor="middle" fill="#999" font-size="9" font-family="Arial">Page 20</text>
+</svg>

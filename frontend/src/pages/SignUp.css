@@ -1,0 +1,109 @@
+.signup-panel__content {
+  max-width: 480px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  gap: 16px;
+}
+
+.signup-form__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy, #0a0e14);
+  margin: 0;
+}
+
+.signup-form__subtitle {
+  font-size: 0.9rem;
+  color: var(--gray-500, #6b7280);
+  margin: -8px 0 4px;
+}
+
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.role-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.role-card--selected {
+  border-color: var(--gold, #eab308);
+  background: #fffbeb;
+  box-shadow: 0 0 0 1px var(--gold, #eab308);
+
+  .role-card__icon {
+    background: var(--gold, #eab308);
+    color: var(--navy, #0a0e14);
+  }
+}
+
+.role-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  color: #6b7280;
+  margin-bottom: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.role-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy, #0a0e14);
+  margin: 0 0 6px;
+}
+
+.role-card__desc {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--gray-500, #6b7280);
+  margin: 0;
+}
+
+.login-google-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+
+  &:hover {
+    background: var(--navy, #0a0e14);
+  }
+
+  &:active {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .role-cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#f3f4f6"/>
+  <rect x="40" y="40" width="720" height="56" rx="12" fill="#0a0e14"/>
+  <text x="60" y="75" fill="#eab308" font-family="system-ui,sans-serif" font-size="16" font-weight="700">Artifact Upload</text>
+  <rect x="40" y="120" width="340" height="150" rx="12" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="60" y="140" width="120" height="14" rx="3" fill="#0a0e14"/>
+  <rect x="60" y="165" width="200" height="10" rx="3" fill="#9ca3af"/>
+  <rect x="60" y="200" width="100" height="28" rx="6" fill="#16a34a" opacity="0.2"/>
+  <text x="110" y="219" text-anchor="middle" fill="#16a34a" font-size="11" font-family="system-ui">Completed</text>
+  <rect x="420" y="120" width="340" height="150" rx="12" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="440" y="140" width="100" height="14" rx="3" fill="#0a0e14"/>
+  <rect x="440" y="165" width="180" height="10" rx="3" fill="#9ca3af"/>
+  <rect x="440" y="200" width="100" height="28" rx="6" fill="#fef3c7"/>
+  <text x="490" y="219" text-anchor="middle" fill="#d97706" font-size="11" font-family="system-ui">Processing</text>
+  <rect x="40" y="290" width="340" height="150" rx="12" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="420" y="290" width="340" height="150" rx="12" fill="#fff" stroke="#e5e7eb"/>
+  <rect x="60" y="310" width="90" height="14" rx="3" fill="#0a0e14"/>
+  <rect x="440" y="310" width="70" height="14" rx="3" fill="#0a0e14"/>
+</svg>

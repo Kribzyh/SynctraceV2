@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" fill="#0a0e14"/>
+  <rect x="200" y="50" width="400" height="400" rx="16" fill="#111827" stroke="#1f2937"/>
+  <text x="400" y="90" text-anchor="middle" fill="#eab308" font-family="system-ui,sans-serif" font-size="18" font-weight="700">Create Account</text>
+  <rect x="240" y="120" width="320" height="40" rx="8" fill="#1f2937" stroke="#374151"/>
+  <rect x="240" y="175" width="320" height="40" rx="8" fill="#1f2937" stroke="#374151"/>
+  <rect x="240" y="230" width="320" height="40" rx="8" fill="#1f2937" stroke="#374151"/>
+  <rect x="240" y="300" width="150" height="36" rx="8" fill="#1f2937" stroke="#16a34a"/>
+  <rect x="410" y="300" width="150" height="36" rx="8" fill="#16a34a" opacity="0.3" stroke="#16a34a"/>
+  <text x="315" y="323" text-anchor="middle" fill="#e5e7eb" font-size="12" font-family="system-ui">Student</text>
+  <text x="485" y="323" text-anchor="middle" fill="#e5e7eb" font-size="12" font-family="system-ui">Adviser</text>
+  <rect x="240" y="360" width="320" height="48" rx="8" fill="#eab308"/>
+  <text x="400" y="390" text-anchor="middle" fill="#0a0e14" font-size="14" font-weight="700" font-family="system-ui">Sign Up</text>
+</svg>

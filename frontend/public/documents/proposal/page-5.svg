@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595 842" fill="none">
+  <rect width="595" height="842" fill="#fff"/>
+  <text x="297" y="40" text-anchor="middle" fill="#111" font-family="Times New Roman, serif" font-size="11" font-weight="700">Project Proposal — SyncTrace</text>
+  <text x="80" y="80" fill="#111" font-size="12" font-weight="700" font-family="Arial">Upload History Log</text>
+  <rect x="80" y="110" width="435" height="200" rx="6" fill="#f9fafb" stroke="#d1d5db"/>
+  <text x="100" y="140" font-size="9" font-family="monospace">v1 SRS uploaded — May 20, 2026</text>
+  <text x="100" y="160" font-size="9" font-family="monospace">v2 SRS uploaded — May 24, 2026</text>
+  <text x="297" y="820" text-anchor="middle" fill="#999" font-size="9">Page 5</text>
+</svg>
