@@ -33,7 +33,7 @@
 .init-step__title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
   margin: 0 0 8px;
 }
 
@@ -50,7 +50,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   font-size: 0.95rem;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
   background: #fafafa;
   font-family: inherit;
   box-sizing: border-box;
@@ -61,22 +61,6 @@
     border-color: #d1d5db;
     background: #fff;
   }
-}
-
-.init-select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-}
-
-.init-adviser-preview {
-  margin: 10px 0 0;
-  font-size: 0.82rem;
-  color: #6b7280;
-  text-align: left;
 }
 
 .init-member-add {
@@ -93,7 +77,7 @@
   padding: 0 16px;
   border: none;
   border-radius: 10px;
-  background: var(--navy, #0a0e14);
+  background: var(--navy, #0A101C);
   color: #fff;
   font-size: 0.875rem;
   font-weight: 600;
@@ -125,7 +109,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   font-size: 0.85rem;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
 }
 
 .init-members__remove {
@@ -168,7 +152,7 @@
 
 .init-btn--back {
   background: #f3f4f6;
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
   flex: 0 0 auto;
   min-width: 90px;
 
@@ -178,7 +162,7 @@
 }
 
 .init-btn--next {
-  background: var(--navy, #0a0e14);
+  background: var(--navy, #0A101C);
   color: #fff;
 
   &:hover:not(:disabled) {
@@ -257,5 +241,5 @@
 
 .init-flow-list__item--active .init-flow-list__num {
   background: var(--gold, #eab308);
-  color: var(--navy, #0a0e14);
+  color: var(--navy, #0A101C);
 }

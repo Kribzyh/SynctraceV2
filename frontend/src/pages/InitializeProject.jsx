@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import { capstoneAdvisers } from '../utils/advisers.js'
 import { getUserRole, isWorkspaceInitialized, saveProject } from '../utils/session.js'
 import './Login.css'
 import './InitializeProject.css'
@@ -9,8 +8,7 @@ const steps = [
   { id: 1, label: 'Project Title', desc: 'Enter Project Title' },
   { id: 2, label: 'Section', desc: 'Enter Section' },
   { id: 3, label: 'Team Code', desc: 'Enter Team Code' },
-  { id: 4, label: 'Adviser', desc: 'Select Adviser' },
-  { id: 5, label: 'Team Members', desc: 'Add Team Members' },
+  { id: 4, label: 'Team Members', desc: 'Add Team Members' },
 ]
 
 export default function InitializeProject() {
@@ -19,15 +17,12 @@ export default function InitializeProject() {
   const [title, setTitle] = useState('')
   const [section, setSection] = useState('')
   const [teamCode, setTeamCode] = useState('')
-  const [adviserId, setAdviserId] = useState('')
   const [memberEmail, setMemberEmail] = useState('')
   const [members, setMembers] = useState([])
 
   if (getUserRole() !== 'student' || isWorkspaceInitialized()) {
     return <Navigate to="/dashboard" replace />
   }
-
-  const selectedAdviser = capstoneAdvisers.find((adviser) => adviser.id === adviserId) ?? null
 
   function addMember() {
     const email = memberEmail.trim().toLowerCase()
@@ -45,8 +40,7 @@ export default function InitializeProject() {
     if (step === 1 && !title.trim()) return
     if (step === 2 && !section.trim()) return
     if (step === 3 && !teamCode.trim()) return
-    if (step === 4 && !adviserId) return
-    if (step < 5) {
+    if (step < 4) {
       setStep(step + 1)
       return
     }
@@ -57,12 +51,7 @@ export default function InitializeProject() {
       teamCode: teamCode.trim(),
       members,
       teamRole: 'leader',
-      status: 'In Progress',
-      adviser: {
-        id: selectedAdviser.id,
-        name: selectedAdviser.name,
-        email: selectedAdviser.email,
-      },
+      status: 'In Progress'
     })
     navigate('/dashboard')
   }
@@ -75,8 +64,7 @@ export default function InitializeProject() {
     (step === 1 && title.trim()) ||
     (step === 2 && section.trim()) ||
     (step === 3 && teamCode.trim()) ||
-    (step === 4 && adviserId) ||
-    step === 5
+    step === 4
 
   return (
     <div className="login-page">
@@ -162,7 +150,7 @@ export default function InitializeProject() {
                 <input
                   type="text"
                   className="init-input"
-                  placeholder="e.g. IT411-02"
+                  placeholder="e.g. G1"
                   value={section}
                   onChange={(e) => setSection(e.target.value.toUpperCase())}
                   autoFocus
@@ -174,14 +162,14 @@ export default function InitializeProject() {
               <div className="init-step">
                 <h2 className="init-step__title">Enter Team Code</h2>
                 <p className="init-step__subtitle">
-                  Use the team code provided by your adviser to join your group.
+                  Use the team code provided by your professor to join your group.
                 </p>
                 <input
                   type="text"
                   className="init-input"
-                  placeholder="e.g. CITU-2026-A1"
+                  placeholder="e.g. 2526-sem2-it332-01"
                   value={teamCode}
-                  onChange={(e) => setTeamCode(e.target.value.toUpperCase())}
+                  onChange={(e) => setTeamCode(e.target.value)}
                   autoFocus
                 />
               </div>
@@ -189,40 +177,15 @@ export default function InitializeProject() {
 
             {step === 4 && (
               <div className="init-step">
-                <h2 className="init-step__title">Select Adviser</h2>
-                <p className="init-step__subtitle">
-                  Choose the capstone adviser assigned to your section.
-                </p>
-                <select
-                  className="init-input init-select"
-                  value={adviserId}
-                  onChange={(e) => setAdviserId(e.target.value)}
-                  autoFocus
-                >
-                  <option value="">Select an adviser...</option>
-                  {capstoneAdvisers.map((adviser) => (
-                    <option key={adviser.id} value={adviser.id}>
-                      {adviser.name} — {adviser.section}
-                    </option>
-                  ))}
-                </select>
-                {selectedAdviser ? (
-                  <p className="init-adviser-preview">{selectedAdviser.email}</p>
-                ) : null}
-              </div>
-            )}
-
-            {step === 5 && (
-              <div className="init-step">
                 <h2 className="init-step__title">Add Team Members</h2>
                 <p className="init-step__subtitle">
-                  Invite teammates by email. You can skip and add members later.
+                  Invite teammates by google email. You can skip and add members later.
                 </p>
                 <div className="init-member-add">
                   <input
                     type="email"
                     className="init-input"
-                    placeholder="teammate@cit.edu"
+                    placeholder="teammate@gmail.com"
                     value={memberEmail}
                     onChange={(e) => setMemberEmail(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addMember())}
@@ -265,7 +228,7 @@ export default function InitializeProject() {
                 disabled={!canContinue}
                 onClick={handleNext}
               >
-                {step === 5 ? 'Create Workspace' : 'Continue'}
+                {step === 4 ? 'Create Workspace' : 'Continue'}
               </button>
             </div>
           </div>
