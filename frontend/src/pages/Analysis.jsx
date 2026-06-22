@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx'
 import AiEngineConfigPanel from '../components/AiEngineConfigPanel.jsx'
 import {
   analysisSnapshot,
@@ -167,6 +168,7 @@ export default function Analysis() {
   return (
     <DashboardLayout>
       <div className="hub-page analysis-page ai-engine-page">
+<<<<<<< HEAD
         <header className="hub-banner">
           <div className="hub-banner__left">
             <div className="hub-banner__icon">
@@ -184,6 +186,19 @@ export default function Analysis() {
             </div>
           </div>
         </header>
+=======
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.4V11h4a8 8 0 1 1-8 8 8 8 0 0 1-8-8h4V9.4C6.8 8.8 6 7.5 6 6a4 4 0 0 1 4-4z" />
+              <circle cx="12" cy="6" r="1" fill="currentColor" />
+            </svg>
+          }
+          title="AI Engine"
+          subtitle="Configure the AI pipeline and monitor processing logs with extraction results."
+        />
+>>>>>>> c8e53a5 (feature(ui): implement standardized PageBanner component across all modules)
 
         <div className="ai-engine-tabs" role="tablist" aria-label="AI Engine views">
           {ENGINE_TABS.map((tab) => (

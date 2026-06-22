@@ -1,4 +1,5 @@
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import { analysisSnapshot } from '../utils/traceability.js'
 import './HubPage.css'
 import './Reports.css'
@@ -38,25 +39,19 @@ export default function Reports() {
   return (
     <DashboardLayout>
       <div className="hub-page reports-page">
-        <header className="hub-banner">
-          <div className="hub-banner__left">
-            <div className="hub-banner__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="hub-banner__title">Reports</h1>
-              <p className="hub-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Download exportable traceability and continuity documents.
-              </p>
-            </div>
-          </div>
-        </header>
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+            </svg>
+          }
+          title="Reports"
+          subtitle="Download exportable traceability and continuity reports."
+        />
 
         <div className="reports-grid">
           {reports.map((report) => (

@@ -63,8 +63,8 @@ export default function Login() {
             Auditing
           </h1>
           <p className="login-hero__subtitle">
-            Automate sequential traceability, continuity verification, and audit
-            reporting for capstone projects.
+            Automate artifact synchronization, continuity validation, and 
+            traceability audit reporting across software engineering capstone documents.
           </p>
           <TraceabilityFlow />
         </div>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import {
   artifactDefinitions,
   getArtifactStatus,
@@ -42,23 +43,18 @@ export default function Dashboard() {
   return (
     <DashboardLayout>
       <div className="dashboard">
-        <header className="dashboard-banner">
-          <div className="dashboard-banner__icon">
+        <PageBanner
+          icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <rect x="3" y="3" width="7" height="7" rx="1" />
               <rect x="14" y="3" width="7" height="7" rx="1" />
               <rect x="3" y="14" width="7" height="7" rx="1" />
               <rect x="14" y="14" width="7" height="7" rx="1" />
             </svg>
-          </div>
-          <div className="dashboard-banner__text">
-            <h1 className="dashboard-banner__title">Project Overview</h1>
-            <p className="dashboard-banner__subtitle banner-accent-line--with-text">
-              <span className="banner-accent-line" aria-hidden="true" />
-              Monitor traceability score, continuity status, and artifact progress at a glance.
-            </p>
-          </div>
-        </header>
+          }
+          title="Project Overview"
+          subtitle="Monitor traceability score, continuity status, and artifact progress at a glance."
+        />
 
         <section className="card dashboard-project">
           <div className="dashboard-project__main">

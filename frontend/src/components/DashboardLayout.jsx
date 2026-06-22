@@ -22,11 +22,6 @@ const navSections = [
     label: 'OVERVIEW',
     items: [
       { to: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
-    ],
-  },
-  {
-    label: 'PROJECT',
-    items: [
       { to: '/workspace', label: 'Workspace', icon: 'workspace' },
     ],
   },
@@ -37,6 +32,7 @@ const navSections = [
     ],
   },
   {
+    label: 'TRACEABILITY HUB',
     id: 'trace-tools',
     items: [
       { to: '/mapping', label: 'Mapping', icon: 'mapping' },
@@ -53,7 +49,7 @@ const navSections = [
   },
 ]
 
-function NavIcon({ name }) {
+function NavIcon({ name, className }) {
   const icons = {
     dashboard: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -113,6 +109,13 @@ function NavIcon({ name }) {
         <polyline points="14 2 14 8 20 8" />
       </svg>
     ),
+    logout: (
+      <svg className={className} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+        <polyline points="16 17 21 12 16 7" />
+        <line x1="21" y1="12" x2="9" y2="12" />
+      </svg>
+    ),
   }
   return icons[name] ?? null
 }
@@ -151,6 +154,7 @@ export default function DashboardLayout({ children }) {
 
         <div className="sidebar__footer">
           <NavLink to="/login" className="sidebar__logout">
+            <NavIcon name="logout" className="sidebar__logout-icon" />
             Logout
           </NavLink>
         </div>

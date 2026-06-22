@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import ComponentTraceModal from '../components/ComponentTraceModal.jsx'
 import {
   artifactColumns,
@@ -96,26 +97,20 @@ export default function Matrix() {
   return (
     <DashboardLayout>
       <div className="matrix-page">
-        <header className="hub-banner matrix-banner">
-          <div className="hub-banner__left">
-            <div className="hub-banner__icon hub-banner__icon--layers">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <line x1="3" y1="9" x2="21" y2="9" />
-                <line x1="3" y1="15" x2="21" y2="15" />
-                <line x1="9" y1="3" x2="9" y2="21" />
-                <line x1="15" y1="3" x2="15" y2="21" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="hub-banner__title">Matrix</h1>
-              <p className="hub-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Matrix view of component-level coverage across all IEEE artifacts.
-              </p>
-            </div>
-          </div>
-        </header>
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="3" y1="15" x2="21" y2="15" />
+              <line x1="9" y1="3" x2="9" y2="21" />
+              <line x1="15" y1="3" x2="15" y2="21" />
+            </svg>
+          }
+          title="Matrix"
+          subtitle="Track project requirements from objectives through to code implementation"
+        />
 
         <div className="matrix-stat-row">
           <MatrixStatCard tone="blue" icon="◫" value={total} label="Total Components" />

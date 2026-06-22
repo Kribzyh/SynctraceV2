@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AdviserLayout from '../../components/AdviserLayout.jsx'
+import { PageBanner } from '../../components/PageBanner.jsx' 
 import AdviserTeamCard from '../../components/AdviserTeamCard.jsx'
 import {
   adviserSections,
@@ -41,41 +42,36 @@ export default function AdviserDashboard() {
   return (
     <AdviserLayout>
       <div className="adviser-page adviser-dashboard">
-        <header className="adviser-dashboard__hero">
-          <div className="adviser-dashboard__hero-main">
-            <div className="adviser-dashboard__hero-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
+        
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          }
+          tag="CAPSTONE ADVISER PORTAL"
+          title="Adviser Dashboard"
+          subtitle="Review capstone teams and open a project to inspect traceability health."
+          rightElement={
+            <div className="adviser-dashboard__hero-stats">
+              <div className="adviser-dashboard__hero-stat">
+                <span className="adviser-dashboard__hero-stat-value">{filteredTeams.length}</span>
+                <span className="adviser-dashboard__hero-stat-label">Teams</span>
+              </div>
+              <div className="adviser-dashboard__hero-stat">
+                <span className="adviser-dashboard__hero-stat-value">{pendingCount}</span>
+                <span className="adviser-dashboard__hero-stat-label">Pending</span>
+              </div>
+              <div className="adviser-dashboard__hero-stat">
+                <span className="adviser-dashboard__hero-stat-value">{revisionCount}</span>
+                <span className="adviser-dashboard__hero-stat-label">Needs Revision</span>
+              </div>
             </div>
-            <div>
-              <p className="adviser-dashboard__hero-eyebrow">Capstone Adviser Portal</p>
-              <h1 className="adviser-dashboard__hero-title">Adviser Dashboard</h1>
-              <p className="adviser-dashboard__hero-subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Review capstone teams and open a project to inspect traceability health.
-              </p>
-            </div>
-          </div>
-
-          <div className="adviser-dashboard__hero-stats">
-            <div className="adviser-dashboard__hero-stat">
-              <span className="adviser-dashboard__hero-stat-value">{filteredTeams.length}</span>
-              <span className="adviser-dashboard__hero-stat-label">Teams</span>
-            </div>
-            <div className="adviser-dashboard__hero-stat">
-              <span className="adviser-dashboard__hero-stat-value">{pendingCount}</span>
-              <span className="adviser-dashboard__hero-stat-label">Pending</span>
-            </div>
-            <div className="adviser-dashboard__hero-stat">
-              <span className="adviser-dashboard__hero-stat-value">{revisionCount}</span>
-              <span className="adviser-dashboard__hero-stat-label">Needs Revision</span>
-            </div>
-          </div>
-        </header>
+          }
+        />
 
         <section className="card adviser-dashboard__toolbar">
           <div className="adviser-dashboard__toolbar-filters">

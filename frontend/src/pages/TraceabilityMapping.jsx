@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import ComponentTraceModal from '../components/ComponentTraceModal.jsx'
 import { loadArtifacts } from '../utils/artifacts.js'
 import {
@@ -153,46 +154,42 @@ export default function TraceabilityMapping() {
   return (
     <DashboardLayout>
       <div className="hub-page map-page">
-        <header className="hub-banner map-banner">
-          <div className="hub-banner__left">
-            <div className="hub-banner__icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="6" cy="6" r="3" />
-                <circle cx="18" cy="18" r="3" />
-                <path d="M8.5 8.5l7 7" />
-                <circle cx="18" cy="6" r="3" />
-                <circle cx="6" cy="18" r="3" />
-              </svg>
-            </div>
-            <div>
-              <h1 className="hub-banner__title">Mapping</h1>
-              <p className="hub-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Visualize how each component is connected across the software development lifecycle.
-              </p>
-            </div>
-          </div>
-          <button
-            type="button"
-            className="map-banner__btn"
-            onClick={handleGenerateMap}
-            disabled={generating}
-          >
-            {generating ? (
-              <>
-                <span className="map-banner__btn-spinner" aria-hidden="true" />
-                Generating…
-              </>
-            ) : (
-              <>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg>
-                Generate Traceability Map
-              </>
-            )}
-          </button>
-        </header>
+    
+        <PageBanner
+          icon={
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="6" cy="6" r="3" />
+              <circle cx="18" cy="18" r="3" />
+              <path d="M8.5 8.5l7 7" />
+              <circle cx="18" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+            </svg>
+          }
+          title="Mapping"
+          subtitle="Visualize how each component is connected across the software development lifecycle."
+          rightElement={
+            <button
+              type="button"
+              className="map-banner__btn"
+              onClick={handleGenerateMap}
+              disabled={generating}
+            >
+              {generating ? (
+                <>
+                  <span className="map-banner__btn-spinner" aria-hidden="true" />
+                  Generating…
+                </>
+              ) : (
+                <>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  </svg>
+                  Generate Traceability Map
+                </>
+              )}
+            </button>
+          }
+        />
 
         <div className="map-layout">
           <aside className="map-panel map-panel--list">

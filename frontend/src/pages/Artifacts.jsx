@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import DashboardLayout from '../components/DashboardLayout.jsx'
+import { PageBanner } from '../components/PageBanner.jsx' 
 import {
   addArtifactVersion,
   artifactDefinitions,
@@ -16,7 +17,7 @@ import './Artifacts.css'
 
 function DocIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
       <polyline points="14 2 14 8 20 8" />
       <line x1="16" y1="13" x2="8" y2="13" />
@@ -163,20 +164,12 @@ export default function Artifacts() {
   return (
     <DashboardLayout>
       <div className="artifacts-page">
-        <header className="artifacts-banner">
-          <div className="artifacts-banner__left">
-            <div className="artifacts-banner__icon">
-              <DocIcon />
-            </div>
-            <div>
-              <h1 className="artifacts-banner__title">Artifact Upload</h1>
-              <p className="artifacts-banner__subtitle banner-accent-line--with-text">
-                <span className="banner-accent-line" aria-hidden="true" />
-                Upload IEEE capstone documents with version tracking.
-              </p>
-            </div>
-          </div>
-        </header>
+        
+        <PageBanner
+          icon={<DocIcon />}
+          title="Artifact Upload"
+          subtitle="Upload capstone documents and github repository with version tracking."
+        />
 
         <div className="artifacts-list">
           {artifactDefinitions.map((def) => {
@@ -197,7 +190,7 @@ export default function Artifacts() {
                 <div className="artifact-entry__header">
                   <div className="artifact-entry__info">
                     <div className="artifact-entry__icon">
-                      {def.isRepo ? <RepoIcon /> : <DocIcon />}
+                      {def.isRepo ? <RepoIcon /> : <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /></svg>}
                     </div>
                     <div>
                       <p className="artifact-entry__title">{def.title}</p>
