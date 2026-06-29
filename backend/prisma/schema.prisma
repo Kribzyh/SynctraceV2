@@ -1,0 +1,247 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  ADVISER
+}
+
+enum ArtifactType {
+  PROPOSAL
+  SRS
+  SDD
+  SPMP
+  STD
+  SOURCE_CODE
+}
+
+enum SyncStatus {
+  PENDING
+  PROCESSING
+  SUCCESS
+  FAILED
+}
+
+enum ReadinessStatus {
+  READY
+  NEEDS_REVISION
+  CRITICAL_GAPS
+}
+
+enum GapSeverity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum ArtifactPair {
+  PROPOSAL_TO_SRS
+  SRS_TO_SDD
+  SRS_TO_SPMP
+  SRS_TO_STD
+  SDD_TO_SOURCE_CODE
+}
+
+enum ExportFormat {
+  PDF
+  JSON
+  CSV
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id                 String           @id @default(uuid())
+  googleId           String           @unique
+  email              String           @unique
+  name               String
+  pictureUrl         String?
+  role               Role?
+  createdAt          DateTime         @default(now())
+  projectMemberships  ProjectMember[]
+  advisedProjects     Project[]        @relation("AdviserProjects")
+  exportJobs          ExportJob[]      @relation("ExportJobRequestedBy")
+  auditLogs           AuditLog[]
+}
+
+model Project {
+  id            String                  @id @default(uuid())
+  title         String
+  teamCode      String                  @unique
+  adviser       User?                   @relation("AdviserProjects", fields: [adviserId], references: [id])
+  adviserId     String?
+  members       ProjectMember[]
+  artifacts     Artifact[]
+  auditResults  AuditResult[]
+  traceLinks    TraceabilityLink[]
+  gaps          Gap[]
+  alignments    SourceCodeAlignmentResult[]
+  diagrams      DiagramRecommendation[]
+  createdAt     DateTime                @default(now())
+}
+
+model ProjectMember {
+  id        String   @id @default(uuid())
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  joinedAt  DateTime @default(now())
+
+  @@unique([projectId, userId])
+}
+
+model Artifact {
+  id            String          @id @default(uuid())
+  project       Project         @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId     String
+  type          ArtifactType
+  sourceUrl     String
+  syncStatus    SyncStatus      @default(PENDING)
+  lastSyncedAt  DateTime?
+  rawStorageKey String?
+  smartGoals    Json?
+  evaluation    Json?
+  createdAt     DateTime        @default(now())
+  chunks        ArtifactChunk[]
+
+  @@unique([projectId, type])
+}
+
+model ArtifactChunk {
+  id          String   @id @default(uuid())
+  artifact    Artifact  @relation(fields: [artifactId], references: [id], onDelete: Cascade)
+  artifactId  String   @map("artifact_id")
+  content     String
+  sectionPath String?
+  embedding   Unsupported("vector(1536)")?
+  createdAt   DateTime  @default(now())
+
+  @@index([artifactId])
+  @@map("artifact_chunks")
+}
+
+model TraceabilityLink {
+  id              String      @id @default(uuid())
+  project         Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId       String
+  pair            ArtifactPair
+  sourceChunkId   String
+  targetChunkId   String
+  alignmentScore  Float
+  coveragePercent Float?
+  auditResult     AuditResult? @relation(fields: [auditResultId], references: [id], onDelete: SetNull)
+  auditResultId   String?
+  createdAt       DateTime    @default(now())
+
+  @@index([projectId, pair])
+}
+
+model Gap {
+  id               String                    @id @default(uuid())
+  project          Project                   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId        String
+  pair             ArtifactPair
+  type             String
+  severity         GapSeverity
+  description      String
+  affectedSections Json?
+  auditResult      AuditResult?              @relation(fields: [auditResultId], references: [id], onDelete: SetNull)
+  auditResultId    String?
+  createdAt        DateTime                  @default(now())
+  diagnostic       DiagnosticRecommendation?
+
+  @@index([projectId, pair])
+  @@index([projectId, severity])
+}
+
+model DiagnosticRecommendation {
+  id                 String   @id @default(uuid())
+  gap                Gap      @relation(fields: [gapId], references: [id], onDelete: Cascade)
+  gapId              String   @unique
+  rootCause          String
+  recommendation     String
+  codeRecommendation String?
+  priority           GapSeverity
+  aiConfidence       Float?
+  createdAt          DateTime @default(now())
+}
+
+model SourceCodeAlignmentResult {
+  id               String   @id @default(uuid())
+  project          Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId        String
+  designComponent  String
+  matchedSymbol    String?
+  status           String
+  evidenceFilePath String?
+  createdAt        DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model DiagramRecommendation {
+  id          String   @id @default(uuid())
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId   String
+  diagramType String
+  mermaidCode String
+  explanation String
+  sourceGapId String?
+  createdAt   DateTime @default(now())
+
+  @@index([projectId])
+}
+
+model AuditResult {
+  id                 String            @id @default(uuid())
+  project            Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId          String
+  overallScore       Float
+  readinessStatus    ReadinessStatus
+  traceabilityLinks  TraceabilityLink[]
+  gaps               Gap[]
+  exportJobs         ExportJob[]
+  createdAt          DateTime          @default(now())
+
+  @@index([projectId, createdAt])
+}
+
+model ExportJob {
+  id            String        @id @default(uuid())
+  auditResult   AuditResult   @relation(fields: [auditResultId], references: [id], onDelete: Cascade)
+  auditResultId String
+  requestedBy   User          @relation("ExportJobRequestedBy", fields: [requestedById], references: [id], onDelete: Cascade)
+  requestedById String
+  format        ExportFormat
+  status        JobStatus     @default(PENDING)
+  fileStorageKey String?
+  createdAt     DateTime      @default(now())
+  completedAt   DateTime?
+
+  @@index([requestedById])
+  @@index([auditResultId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  action    String
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+}
