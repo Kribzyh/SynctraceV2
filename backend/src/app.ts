@@ -9,6 +9,7 @@ import { notFound } from "./middleware/notFound.js";
 import { healthRouter } from "./routes/health.route.js";
 import { authRouter } from "./modules/auth/auth.routes.js";
 import { passportMiddleware } from "./config/passport.js";
+import { projectsRouter } from "./modules/projects/projects.routes.js";
 
 export const createApp = () => {
   const app = express();
@@ -27,6 +28,7 @@ export const createApp = () => {
 
   app.use("/api/health", healthRouter);
   app.use("/api/auth", authRouter);
+  app.use("/api/projects", projectsRouter);
 
   app.use(notFound);
   app.use(errorHandler);
